@@ -11,42 +11,26 @@ body {
 #interface {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     border: solid red 10px;
     width: 66%;
+    margin: 10px;
 }
 
 #display {
     background-color: red;
     height: 10%;
-    width: 100%;
 }
 
 #buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-}
-
-#numpad {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     width: 80%;
 }
 
-#operators {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 20%;
+#enter {
+    grid-row: 5/5;
+    grid-column: 3/5;
 }
 
 .num-btn,
