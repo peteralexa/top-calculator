@@ -4,28 +4,39 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 #interface {
     display: flex;
     flex-direction: column;
     border: solid red 10px;
-    width: 66%;
-    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
 }
 
 #display {
     background-color: red;
-    height: 10%;
+    align-self: stretch;
+    padding-top: 1em;
+    text-align: right;
 }
 
 #buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    width: 80%;
+    gap: 0.5em;
 }
 
 #enter {
@@ -35,6 +46,7 @@ body {
 
 .num-btn,
 .operator-btn {
-    border-radius: 50%;
     padding: 0.5rem;
+    box-sizing: border-box;
+    text-align: center;
 }
