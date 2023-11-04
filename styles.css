@@ -30,6 +30,8 @@ body {
     align-self: stretch;
     padding-top: 1em;
     text-align: right;
+    min-height: 30px;
+    padding-right: 10px;
 }
 
 #buttons {
@@ -39,7 +41,7 @@ body {
     gap: 0.5em;
 }
 
-#enter {
+#equals {
     grid-row: 5/5;
     grid-column: 3/5;
 }
