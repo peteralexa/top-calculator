@@ -23,21 +23,21 @@ decimalBtn.addEventListener("click", function () {
 
 negativeBtn.addEventListener("click", function () {
     if (operator === "") {
-        if (numA.charAt(0) !== "-") {
-            numA = "-" + numA;
-        } else {
-            numA = numA.slice(1);
-        }
-        pushNumToDisplay();
+        numA = toggleSign(numA);
+        display.textContent = numA;
     } else {
-        if (numB.charAt(0) !== "-") {
-            numB = "-" + numB;
-        } else {
-            numB = numB.slice(1);
-        }
-        pushNumToDisplay(); 
+        numB = toggleSign(numB);
+        display.textContent = numB;
     }
 });
+
+function toggleSign(number) {
+    if (number.charAt(0) !== "-") {
+        return "-" + number;
+    } else {
+        return number.slice(1);
+    }
+}
 
 function pushNumToDisplay() {
     if (operator === "") {
