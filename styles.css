@@ -41,11 +41,6 @@ body {
     gap: 0.5em;
 }
 
-#equals {
-    grid-row: 5/5;
-    grid-column: 3/5;
-}
-
 .num-btn,
 .operator-btn {
     padding: 0.5rem;
@@ -56,4 +51,27 @@ body {
 .operator-btn:active,
 .operator-btn:focus {
     background-color: #ccc;
+}
+
+#divide,
+#multiply,
+#minus,
+#plus {
+    background-color: #e85b48;
+}
+
+#negative,
+#backspace,
+#percent,
+#clear {
+    background-color: #6d42c7; 
+}
+
+.num-btn {
+    background-color: #8aacff; ;
+}
+
+#decimal,
+#equals {
+   background-color: #626fe6;
 }

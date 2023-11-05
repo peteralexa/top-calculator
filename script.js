@@ -14,6 +14,19 @@ const equalsBtn = document.getElementById("equals");
 const decimalBtn = document.getElementById("decimal");
 const negativeBtn = document.getElementById("negative");
 const clearBtn = document.getElementById("clear");
+const backspaceBtn = document.getElementById("backspace");
+
+backspaceBtn.addEventListener("click", function () {
+    if (equalsPressed) {
+        allClear();
+    } else if (operator === "") {
+        numA = numA.slice(0, -1);
+        display.textContent = numA;
+    } else {
+        numB = numB.slice(0, -1);
+        display.textContent = numB;
+    }
+});
 
 decimalBtn.addEventListener("click", function () {
     if (operator === "" && numA.indexOf(".") === -1) {
