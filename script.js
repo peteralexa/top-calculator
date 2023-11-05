@@ -74,11 +74,15 @@ numBtns.forEach(function (numBtn) {
         }
 
         if (operator === "") {
-            numA += numBtn.textContent;
-            display.textContent = numA;
+            if (numA.indexOf(".") === -1 || (numA.indexOf(".") !== -1 && numA.split(".")[1].length < 20)) {
+                numA += numBtn.textContent;
+                display.textContent = numA;
+            }
         } else {
-            numB += numBtn.textContent;
-            display.textContent = numB;
+            if (numB.indexOf(".") === -1 || (numB.indexOf(".") !== -1 && numB.split(".")[1].length < 20)) {
+                numB += numBtn.textContent;
+                display.textContent = numB;
+            }
         }
     });
 });
@@ -87,14 +91,12 @@ operatorBtns.forEach(function (operatorBtn) {
     operatorBtn.addEventListener("click", function () {
         if (numA !== "" && numB !== "") {
             intermediateResult = operate(parseFloat(numA), parseFloat(numB), operator);
-            display.textContent = intermediateResult.toString();
             numA = intermediateResult.toString();
             numB = "";
-            operator = operatorBtn.textContent;
-            equalsPressed = false;
-        } else {
-            operator = operatorBtn.textContent;
+            display.textContent = numA;
         }
+        operator = operatorBtn.textContent;
+        equalsPressed = false;
     });
 });
 
