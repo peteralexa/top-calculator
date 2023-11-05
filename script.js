@@ -4,6 +4,9 @@ let operator = "";
 let equalsPressed = false;
 let intermediateResult = null;
 
+const MAX_DIGITS_BEFORE_DECIMAL = 9; 
+const MAX_DIGITS_AFTER_DECIMAL = 3;
+
 const display = document.getElementById("display");
 const numBtns = document.querySelectorAll(".num-btn");
 const operatorBtns = document.querySelectorAll(".operator-btn");
@@ -74,12 +77,18 @@ numBtns.forEach(function (numBtn) {
         }
 
         if (operator === "") {
-            if (numA.indexOf(".") === -1 || (numA.indexOf(".") !== -1 && numA.split(".")[1].length < 20)) {
+            if (numA.indexOf(".") === -1 && numA.length < MAX_DIGITS_BEFORE_DECIMAL) {
+                numA += numBtn.textContent;
+                display.textContent = numA;
+            } else if (numA.indexOf(".") !== -1 && numA.split(".")[1].length < MAX_DIGITS_AFTER_DECIMAL) {
                 numA += numBtn.textContent;
                 display.textContent = numA;
             }
         } else {
-            if (numB.indexOf(".") === -1 || (numB.indexOf(".") !== -1 && numB.split(".")[1].length < 20)) {
+            if (numB.indexOf(".") === -1 && numB.length < MAX_DIGITS_BEFORE_DECIMAL) {
+                numB += numBtn.textContent;
+                display.textContent = numB;
+            } else if (numB.indexOf(".") !== -1 && numB.split(".")[1].length < MAX_DIGITS_AFTER_DECIMAL) {
                 numB += numBtn.textContent;
                 display.textContent = numB;
             }
@@ -126,18 +135,18 @@ function operate(numA, numB, operator) {
     numB = parseFloat(numB);
 
     if (operator === "+") {
-        return numA + numB;
+        return (numA + numB).toString();
     } else if (operator === "-") {
-        return numA - numB;
+        return (numA - numB).toString();
     } else if (operator === "*") {
-        return numA * numB;
+        return (numA * numB).toString();
     } else if (operator === "/") {
         if (numB === 0) {
             return "ERROR DIV BY ZERO";
         }
-        return numA / numB;
+        return (numA / numB).toString();
     } else if (operator === "%") {
-        return (numA / 100) * numB;
+        return ((numA / 100) * numB).toString();
     } else {
         return "ERROR";
     }
