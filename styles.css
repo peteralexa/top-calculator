@@ -55,7 +55,6 @@ body {
     gap: 0.5em;
 }
 
-
 .operator-btn:active,
 .operator-btn:focus {
     background-color: #ccc;
