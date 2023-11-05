@@ -3,6 +3,7 @@ let numB = "";
 let operator = "";
 let equalsPressed = false;
 let intermediateResult = null;
+let decimalAdded = false;
 
 const MAX_DIGITS_BEFORE_DECIMAL = 9; 
 const MAX_DIGITS_AFTER_DECIMAL = 3;
@@ -15,6 +16,88 @@ const decimalBtn = document.getElementById("decimal");
 const negativeBtn = document.getElementById("negative");
 const clearBtn = document.getElementById("clear");
 const backspaceBtn = document.getElementById("backspace");
+
+document.addEventListener("keydown", function (event) {
+    const key = event.key;
+
+    if (!isNaN(key) || key === ".") {
+        handleNumberInput(key);
+    } else if (key === "+" || key === "-" || key === "*" || key === "/" || key === "%") {
+        handleOperatorInput(key);
+    } else if (key === "Enter") {
+        handleEqualsInput();
+    } else if (key === "Escape") {
+        allClear();
+    } else if (key === "Backspace") {
+        handleBackspaceInput();
+    }
+});
+
+function handleBackspaceInput() {
+    if (equalsPressed) {
+        allClear();
+    } else if (operator === "") {
+        numA = numA.slice(0, -1);
+        display.textContent = numA;
+    } else {
+        numB = numB.slice(0, -1);
+        display.textContent = numB;
+    }
+}
+
+function handleNumberInput(key) {
+    if (equalsPressed) {
+        allClear();
+    }
+
+    if (operator === "") {
+        if (key === "." && !decimalAdded) {
+            numA += key;
+            decimalAdded = true;
+        } else if (!isNaN(key) && numA.indexOf(".") !== -1 && numA.split(".")[1].length < MAX_DIGITS_AFTER_DECIMAL) {
+            numA += key;
+        } else if (!isNaN(key) && numA.indexOf(".") === -1 && numA.length < MAX_DIGITS_BEFORE_DECIMAL) {
+            numA += key;
+            decimalAdded = false;
+        }
+        pushNumToDisplay();
+    } else {
+        if (key === "." && !decimalAdded) {
+            numB += key;
+            decimalAdded = true;
+        } else if (!isNaN(key) && numB.indexOf(".") !== -1 && numB.split(".")[1].length < MAX_DIGITS_AFTER_DECIMAL) {
+            numB += key;
+        } else if (!isNaN(key) && numB.indexOf(".") === -1 && numB.length < MAX_DIGITS_BEFORE_DECIMAL) {
+            numB += key;
+            decimalAdded = false;
+        }
+        pushNumToDisplay();
+    }
+}
+
+function handleOperatorInput(key) {
+    if (numA !== "" && numB !== "") {
+        intermediateResult = operate(parseFloat(numA), parseFloat(numB), operator);
+        numA = intermediateResult.toString();
+        numB = "";
+        display.textContent = numA;
+    }
+    operator = key;
+    equalsPressed = false;
+    pushNumToDisplay();
+}
+
+function handleEqualsInput() {
+    if (numA !== "" && numB !== "" && operator !== "") {
+        const result = operate(parseFloat(intermediateResult || numA), parseFloat(numB), operator);
+        display.textContent = result.toString();
+        intermediateResult = null;
+        numA = result.toString();
+        numB = "";
+        operator = "";
+        equalsPressed = true;
+    }
+}
 
 backspaceBtn.addEventListener("click", function () {
     if (equalsPressed) {
@@ -32,9 +115,11 @@ decimalBtn.addEventListener("click", function () {
     if (operator === "" && numA.indexOf(".") === -1) {
         numA += ".";
         pushNumToDisplay();
+        decimalAdded = true;
     } else if (operator !== "" && numB.indexOf(".") === -1) {
         numB += ".";
         pushNumToDisplay();
+        decimalAdded = true;
     }
 });
 
