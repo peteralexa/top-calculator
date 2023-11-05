@@ -10,6 +10,7 @@ const operatorBtns = document.querySelectorAll(".operator-btn");
 const equalsBtn = document.getElementById("equals");
 const decimalBtn = document.getElementById("decimal");
 const negativeBtn = document.getElementById("negative");
+const clearBtn = document.getElementById("clear");
 
 decimalBtn.addEventListener("click", function () {
     if (operator === "" && numA.indexOf(".") === -1) {
@@ -22,14 +23,28 @@ decimalBtn.addEventListener("click", function () {
 });
 
 negativeBtn.addEventListener("click", function () {
-    if (operator === "") {
+    if (equalsPressed) {
+        if (numA) {
+            numA = toggleSign(numA);
+        } else if (numB) {
+            numB = toggleSign(numB);
+        }
+        display.textContent = numA || numB || "0";
+        operator = "";
+        equalsPressed = false;
+        intermediateResult = null;
+    } else if (operator === "") {
         numA = toggleSign(numA);
         display.textContent = numA;
     } else {
-        numB = toggleSign(numB);
-        display.textContent = numB;
+        if (numB) {
+            numB = toggleSign(numB);
+            display.textContent = numB;
+        }
     }
 });
+
+clearBtn.addEventListener("click", allClear);
 
 function toggleSign(number) {
     if (number.charAt(0) !== "-") {
@@ -70,11 +85,7 @@ numBtns.forEach(function (numBtn) {
 
 operatorBtns.forEach(function (operatorBtn) {
     operatorBtn.addEventListener("click", function () {
-        if (operatorBtn.textContent === "AC") {
-            allClear();
-        } else if (operatorBtn.textContent === "+/-") {
-            toggleSign();
-        } else if (numA !== "" && numB !== "") {
+        if (numA !== "" && numB !== "") {
             intermediateResult = operate(parseFloat(numA), parseFloat(numB), operator);
             display.textContent = intermediateResult.toString();
             numA = intermediateResult.toString();
@@ -120,7 +131,7 @@ function operate(numA, numB, operator) {
         return numA * numB;
     } else if (operator === "/") {
         if (numB === 0) {
-            return "Error";
+            return "ERROR DIV BY ZERO";
         }
         return numA / numB;
     } else if (operator === "%") {
