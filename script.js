@@ -17,6 +17,10 @@ const negativeBtn = document.getElementById("negative");
 const clearBtn = document.getElementById("clear");
 const backspaceBtn = document.getElementById("backspace");
 
+window.addEventListener('dblclick', function (event) {
+    event.preventDefault();
+});
+
 document.addEventListener("keydown", function (event) {
     const key = event.key;
 
