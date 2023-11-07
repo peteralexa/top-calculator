@@ -20,11 +20,19 @@ body {
     gap: 10px;
     font-weight: bolder;
     font-size: 0.7rem;
-    background-color: white;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: #184297;
+    opacity: 1;
+    background-size: 31px 40px;
+    background-image:  repeating-linear-gradient(to right, #701b9a, #701b9a 2px, #184297 2px, #184297);
+    border: solid 2px white;
     border-radius:8px;
     padding: 2px;
     padding-top: 3px;
     width: 100%;
+    -moz-box-shadow: 0 0 5px #000000;
+    -webkit-box-shadow: 0 0 5px #000000;
+    box-shadow: 0 0 5px #000000;
 }
 
 #interface {
@@ -36,6 +44,10 @@ body {
     align-items: center;
     gap: 1em;
     padding: 1em;
+    background-color: rgb(209, 209, 209);
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
 }
 
 #display {
@@ -46,6 +58,9 @@ body {
     min-height: 30px;
     padding-right: 10px;
     border: solid white 2px;
+    -moz-box-shadow: 0 0 5px #000000;
+    -webkit-box-shadow: 0 0 5px #000000;
+    box-shadow: 0 0 5px #000000;
 }
 
 #buttons {
@@ -53,11 +68,6 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
     gap: 0.5em;
-}
-
-.operator-btn:active,
-.operator-btn:focus {
-    background-color: #ccc;
 }
 
 #divide,
@@ -97,13 +107,37 @@ body {
     padding: 0.5rem;
     box-sizing: border-box;
     text-align: center;
-    color: white;
+    color: black;
     border-color: white;
     font-weight: bolder ;
     font-size: 1.5rem;
+    -moz-box-shadow: 0 0 5px #000000;
+    -webkit-box-shadow: 0 0 5px #000000;
+    box-shadow: 0 0 5px #000000;
 }
 
 img{
     width: 70%;
     height: auto;
+    opacity: 0.7;
+}
+
+#header:hover {
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
+}
+
+#divide:active,
+#divide:focus,
+#multiply:active,
+#multiply:focus,
+#minus:focus,
+#minus:active,
+#plus:active,
+#plus:focus {
+    background-color: #bd1b05;
+}
+
+#percent:active,
+#percent:focus {
+    background-color: #584a78; 
 }
