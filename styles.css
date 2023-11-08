@@ -1,5 +1,5 @@
 html {
-    background-color: black;
+    background-color: rgb(76, 75, 75);
     font-size: 100%;
     touch-action: manipulation;
 }
@@ -21,16 +21,15 @@ body {
     gap: 10px;
     font-weight: bolder;
     font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.7);
-    background-color: #184297;
-    opacity: 1;
-    background-size: 31px 40px;
-    background-image:  repeating-linear-gradient(to right, #701b9a, #701b9a 2px, #184297 2px, #184297);
+    color: rgba(255, 255, 255, 0.4);
+    background-color: #332a40;
+    background-size: 35.3px 40px;
+    background-image:  repeating-linear-gradient(to right, #b44e99, #b44e99 1px, #332a40 1px, #332a40);
     border: solid 2px white;
     border-radius:8px;
     padding: 2px;
     padding-top: 3px;
-    width: 100%;
+    width: 70%;
     -moz-box-shadow: 0 0 5px #000000;
     -webkit-box-shadow: 0 0 5px #000000;
     box-shadow: 0 0 5px #000000;
@@ -46,9 +45,9 @@ body {
     gap: 1em;
     padding: 1em;
     background-color: rgb(209, 209, 209);
-    -moz-box-shadow: 0 0 10px #ccc;
-    -webkit-box-shadow: 0 0 10px #ccc;
-    box-shadow: 0 0 10px #ccc;
+    -moz-box-shadow: 0 0 100px #000000;
+    -webkit-box-shadow: 0 0 100px #000000;
+    box-shadow: 0 0 100px #000000;
 }
 
 #display {
@@ -75,23 +74,27 @@ body {
 #multiply,
 #minus,
 #plus {
-    background-color: #e85b48;
+    background-color: #ffcc00;
+    color: black;
 }
 
 #negative,
 #backspace,
 #percent,
 #clear {
-    background-color: #6d42c7; 
+    background-color: #354d68; 
+    color: white;
 }
 
 .num-btn {
-    background-color: #8aacff;
+    background-color: #1a2634; 
+    color: white;
 }
 
 #decimal,
 #equals {
-   background-color: #626fe6;
+    background-color: #1a2634; 
+    color: white;
 }
 
 #divide,
@@ -108,23 +111,19 @@ body {
     padding: 0.5rem;
     box-sizing: border-box;
     text-align: center;
-    color: black;
     border-color: white;
     font-weight: bolder ;
     font-size: 1.5rem;
     -moz-box-shadow: 0 0 5px #000000;
     -webkit-box-shadow: 0 0 5px #000000;
     box-shadow: 0 0 5px #000000;
+    border-radius: 30%;
 }
 
 img{
     width: 70%;
     height: auto;
-    opacity: 0.7;
-}
-
-#header:hover {
-    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
+    opacity: 0.4;
 }
 
 #divide:active,
@@ -135,10 +134,10 @@ img{
 #minus:active,
 #plus:active,
 #plus:focus {
-    background-color: #bd1b05;
+    background-color: #ffac4d;
 }
 
 #percent:active,
 #percent:focus {
-    background-color: #584a78; 
+    background-color: #2a5993; 
 }
